@@ -1,3 +1,5 @@
+-- To change colors go to "C:\Users\Chad\AppData\Local\nvim-data\lazy\tokyonight-night\lua\tokyonight\config.lua" and read the readme at https://github.com/folke/tokyonight.nvim 
+
 local M = {
   "folke/tokyonight.nvim",
   commit = "e52c41314e83232840d6970e6b072f9fba242eb9",

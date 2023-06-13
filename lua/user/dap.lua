@@ -52,6 +52,37 @@ function M.config()
       stopOnEntry = false,
     },
   }
+
+  -- PHP
+  local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+  dap.adapters.php = {
+  	type = "executable",
+  	command = "node",
+  	args = { mason_path .. "packages/php-debug-adapter/extension/out/phpDebug.js" },
+  }
+  dap.configurations.php = {
+    {
+      name = "Listen for Xdebug",
+  		type = "php",
+  		request = "launch",
+  		port = 9003,
+
+      -- look up how to configure these
+      serverSourceRoot = 'localhost',
+      localSourceRoot = 'C:/xampp/htdocs/',
+     -- serverSourceRoot = vim.fn.expand("%:p:h").."/",
+     -- localSourceRoot = vim.fn.expand("%:p:h").."/",
+    },
+    -- {
+    --   name = "Debug currently open script",
+  		-- type = "php",
+  		-- request = "launch",
+  		-- port = 9003,
+    --   cwd = "${fileDirname}",
+    --   program = "${file}",
+    --   runtimeExecutable = "php",
+    -- },
+  }
 end
 
 M = {
