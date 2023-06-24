@@ -36,6 +36,14 @@ keymap("n", "l", "n", opts)
 keymap("n", "N", "L", opts)
 keymap("n", "L", "N", opts)
 
+-- Visual --
+keymap("v", "n", "l", opts)
+keymap("v", "l", "n", opts)
+keymap("v", "N", "L", opts)
+keymap("v", "L", "N", opts)
+
+keymap("v", ",.", "<ESC>", opts)
+
 -- Insert --
 -- Press ,. in sequence to escape 
 keymap("i", ",.", "<ESC>", opts)
@@ -86,6 +94,9 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+
+-- Frogmouth
+keymap("n", "<leader>gm", "<cmd>lua _FROGMOUTH_TOGGLE()<CR>", opts)
 
 -- Comment
 keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
