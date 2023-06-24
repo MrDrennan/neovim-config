@@ -39,10 +39,27 @@ function M.config()
   vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 
   local Terminal = require("toggleterm.terminal").Terminal
-  local lazygit = Terminal:new { cmd = "lazygit", hidden = true }
+
+  function GET_CURR_BUFFER()
+    return string.gsub(vim.api.nvim_buf_get_name(0), "\\", "/")
+  end
+
+  function GET_CURR_WORKING_DIR()
+    return string.gsub(vim.fn.getcwd(), "\\", "/")
+  end
 
   function _LAZYGIT_TOGGLE()
+    local lazygit_cmd =  'lazygit -p "' .. GET_CURR_WORKING_DIR() .. '"'
+
+    local lazygit = Terminal:new { cmd = lazygit_cmd, hidden = true }
     lazygit:toggle()
+  end
+
+  function _FROGMOUTH_TOGGLE()
+    local frogmouth_cmd = 'frogmouth "' .. GET_CURR_BUFFER() .. '"'
+
+    local frogmouth = Terminal:new { cmd = frogmouth_cmd, hidden = true }
+    frogmouth:toggle()
   end
 end
 
