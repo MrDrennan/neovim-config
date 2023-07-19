@@ -56,10 +56,16 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>Bdelete<CR>", opts)
 
--- Better paste
-keymap("v", "p", '"_dP', opts)
+-- make clozure deletion (for anki)
+keymap("n", "<leader>cd", "ciW{{c1::<C-r>\"}}<Esc>T:")
+
+-- delete closure deletion (for anki)
+keymap("n", "<leader>dcd", "T:2dF{f}xxb")
 
 -- VISUAL --
+
+-- Better paste
+keymap("v", "p", '"_dP', opts)
 
 keymap("v", "n", "l", opts)
 keymap("v", "l", "n", opts)
